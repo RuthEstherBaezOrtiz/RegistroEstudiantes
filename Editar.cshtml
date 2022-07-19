@@ -1,0 +1,52 @@
+﻿@model RegistroEstudiantes.Models.Estudiantes
+
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+        <div class="panel-warning">
+            <div class="panel-heading">
+
+                <h4>Editar estudiante</h4>
+            </div>
+            <div class="panel-body">
+
+                <form action="@Url.Action("Editar","Estudiantes")" method="post">
+                    <input type="hidden" class="form-control" name="IdEstudiantes" value="@Html.DisplayTextFor(m => m.IdEstudiantes)" required />
+                    <div class="form-group">
+                        <label>Nombres</label>
+                        <input type="text" class="form-control" name="Nombres" value="@Html.DisplayTextFor(m => m.Nombres)" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Apellidos</label>
+                        <input type="text" class="form-control" name="Apellidos" value="@Html.DisplayTextFor(m => m.Apellidos)" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha de nacimiento</label>
+                        <input type="text" class="form-control" name="Fecha" value="@Html.DisplayTextFor(m => m.Fecha)" required min="16" />
+                    </div>
+                    <div class="form-group">
+                        <label>Cursos</label>
+                        <input type="text" class="form-control" name="Curso" value="@Html.DisplayTextFor(m => m.Curso)" required />
+                    </div>
+                    <div>
+                        <input type="radio" name="Estado" value="Activo" id="EstadoPositivo" />
+                        <label>Activo</label>
+                        <input type="radio" name="Estado" value="Inactivo" id="EstadoNegativo" />
+                        <label>Inactivo</label>
+                    </div>
+                    <br />
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a class="btn btn-warning" href="@Url.Action("Inicio","Estudiantes")">Volver</a>
+
+                </form>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
