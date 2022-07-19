@@ -1,0 +1,56 @@
+create table Estudiantes
+(
+   IdEstudiantes int identity not null,
+   Nombres varchar(30),
+   Apellidos varchar(30),
+   Fecha date, 
+   Curso varchar(50),
+   Estado bit
+)
+
+insert into Estudiantes (Nombres,Apellidos,Fecha,Curso,Estado) 
+values 
+('Juan Manuel','Catillo','10/03/1999','Calculo','0'),
+('Maria Julia','Martinez Perez','02/02/2000','Programacion web','1'),
+('Bienvenido','Montillo','08/05/2004','Estadisticas','1'),
+('Julian El','Montero Jimenez','10/10/1992','Datos','0')
+
+create procedure sp_Registrar
+(
+   @Nombres varchar (30),
+   @Apellidos varchar (30),
+   @Fecha datetime,
+   @Curso varchar (50),
+   @Estado bit 
+)
+as
+begin
+insert into Estudiantes(Nombres,Apellidos,Fecha,Curso,Estado)
+values
+(@Nombres,@Apellidos,@Fecha,@Curso,@Estado)
+end
+
+create procedure sp_Editar
+(
+  @IdEstudiantes int,
+  @Nombres varchar (30),
+  @Apellidos varchar(30),
+  @Fecha datetime,
+  @Curso varchar (50),
+  @Estado bit
+)
+as
+begin
+update Estudiantes set 
+Nombres = @Nombres, Apellidos = @Apellidos, @Fecha = @Fecha, Curso = @Curso, 
+Estado = @Estado where IdEstudiantes = @IdEstudiantes
+end
+
+create procedure sp_Eliminar
+(
+ @IdEstudiantes int 
+)
+as
+begin
+delete from Estudiantes where IdEstudiantes = @IdEstudiantes
+end
